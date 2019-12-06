@@ -20,7 +20,17 @@ module.exports = {
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
             {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
             {test: /\.(jpg|png|gif|bmp|jpeg)$/, use:'url-loader?limit=1&name=[hash:8]-[name].[ext]]'},
-            {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'}
+            {test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                use:{
+                    loader:'babel-loader',
+                    options:{
+                        presets:['@babel/preset-env']
+                    }
+                }
+            }
         ]
     }
 }
